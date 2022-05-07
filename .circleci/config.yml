@@ -41,9 +41,6 @@ workflows:
       - print-world:
           requires:
             - print-hello
-      - save-hello-world-output:
-          requires:
-            - print-world
       - save-hello-world-output
       - print-output-file:
           requires:
