@@ -30,7 +30,7 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - attache_workspace:
+      - attach_workspace:
           at: /tmp/workspace/output
       - run:
           command: cat output.txt
