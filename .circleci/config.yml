@@ -33,7 +33,7 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
-          command: cat output.txt
+          command: cat ~/output.txt
 workflows:
   Print-helloEGYWorld-workflow:
     jobs:
