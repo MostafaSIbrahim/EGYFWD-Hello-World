@@ -20,7 +20,7 @@ jobs:
     steps:
       - checkout
       - persist_to_workspace:
-          root: /tmp/dir
+          root: /tmp/workspace
           paths:
             - output
       - run:
@@ -31,7 +31,7 @@ jobs:
     steps:
       - checkout
       - attache_workspace:
-          at: /tmp/dir/output
+          at: /tmp/workspace/output
       - run:
           command: cat output.txt
 workflows:
@@ -44,3 +44,7 @@ workflows:
       - save-hello-world-output:
           requires:
             - print-world
+      - save-hello-world-output
+      - print-output-file:
+          requires:
+            - save-hello-world-output
