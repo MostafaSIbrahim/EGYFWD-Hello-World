@@ -20,18 +20,18 @@ jobs:
     steps:
       - checkout
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: ~/
           paths:
-            - output
+            - output.txt
       - run:
-          command: echo "Hello EGYFWD WORLD" > output.txt
+          command: echo "Hello EGYFWD WORLD" > ~/output.txt
   print-output-file:
     docker:
       - image: cimg/base:stable
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/workspace/output
+          at: ~/output.txt
       - run:
           command: cat output.txt
 workflows:
