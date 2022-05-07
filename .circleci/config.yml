@@ -14,13 +14,26 @@ jobs:
       - checkout
       - run:
           command: echo "EGYFWD World"
-  print-envvar:
+  save-hello-world-output:
     docker:
-      - image: cimg/base:2020.01
+      - image: cimg/base:stable
     steps:
       - checkout
+      - persist_to_workspace:
+          root: /tmp/dir
+          paths:
+            - output
       - run:
-          command: echo $MyName
+          command: echo "Hello EGYFWD WORLD" > output.txt
+  print-output-file:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - attache_workspace:
+          at: /tmp/dir/output
+      - run:
+          command: cat output.txt
 workflows:
   Print-helloEGYWorld-workflow:
     jobs:
@@ -28,6 +41,6 @@ workflows:
       - print-world:
           requires:
             - print-hello
-      - print-envvar:
+      - save-hello-world-output:
           requires:
             - print-world
