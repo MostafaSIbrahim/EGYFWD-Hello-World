@@ -39,6 +39,15 @@ jobs:
       - run:
           command: cat ~/output.txt
       - print_pipeline_id
+  test-fail:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          command: return 1
+      - run:
+          command: echo "previous step failed"  
 workflows:
   Print-helloEGYWorld-workflow:
     jobs:
@@ -50,3 +59,4 @@ workflows:
       - print-output-file:
           requires:
             - save-hello-world-output
+      = test-fail
