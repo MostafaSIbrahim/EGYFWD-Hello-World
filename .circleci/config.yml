@@ -47,7 +47,8 @@ jobs:
       - run:
           command: return 1
       - run:
-          command: echo "previous step failed"  
+          command: echo "previous step failed" 
+          when: on_fail 
 workflows:
   Print-helloEGYWorld-workflow:
     jobs:
@@ -59,4 +60,4 @@ workflows:
       - print-output-file:
           requires:
             - save-hello-world-output
-      = test-fail
+      - test-fail
