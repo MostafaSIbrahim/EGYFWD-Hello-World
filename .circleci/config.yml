@@ -45,7 +45,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: return 1
+          command: exit 1
       - run:
           command: echo "previous step failed" 
           when: on_fail 
