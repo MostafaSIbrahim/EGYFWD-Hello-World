@@ -1,4 +1,9 @@
 version: 2.1
+commands:
+  print_pipeline_id:
+    description: " prints the Circle CI Workflow ID from its environment variable"
+    steps:
+      - run: echo $CIRCLE_WORKFLOW_ID
 jobs:
   print-hello:
     docker:
@@ -34,6 +39,7 @@ jobs:
           at: ~/
       - run:
           command: cat ~/output.txt
+      - print_pipeline_id
 workflows:
   Print-helloEGYWorld-workflow:
     jobs:
