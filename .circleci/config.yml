@@ -44,8 +44,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run:
-          command: exit 1
+      - run: return 1
       - run:
           command: echo "previous step failed" 
           when: on_fail 
